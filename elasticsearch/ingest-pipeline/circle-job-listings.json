@@ -1,0 +1,42 @@
+{
+  "processors": [
+    {
+      "json": {
+        "field": "business_place",
+        "if": "ctx.business_place != null"
+      }
+    },
+    {
+      "json": {
+        "field": "user",
+        "if": "ctx.user != null"
+      }
+    },
+    {
+      "json": {
+        "field": "position",
+        "if": "ctx.position != null"
+      }
+    },
+    {
+      "set": {
+        "field": "business_place.locationPoint",
+        "value": {
+          "lon": "{{business_place.longitude}}",
+          "lat": "{{business_place.latitude}}"
+        },
+        "if": "ctx.business_place != null && ctx.business_place.longitude != null && ctx.business_place.latitude != null"
+      }
+    },
+    {
+      "set": {
+        "field": "user.business_place.locationPoint",
+        "value": {
+          "lon": "{{user.business_place.longitude}}",
+          "lat": "{{user.business_place.latitude}}"
+        },
+        "if": "ctx.user != null && ctx.user.business_place != null && ctx.business_place.longitude != null && ctx.business_place.latitude != null"
+      }
+    }
+  ]
+}
