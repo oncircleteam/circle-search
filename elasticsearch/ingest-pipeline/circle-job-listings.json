@@ -20,6 +20,12 @@
     },
     {
       "set": {
+        "field": "positionName",
+        "copy_from": "position.name"
+      }
+    },
+    {
+      "set": {
         "field": "business_place.locationPoint",
         "value": {
           "lon": "{{business_place.longitude}}",
