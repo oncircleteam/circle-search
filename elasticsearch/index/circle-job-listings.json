@@ -1,4 +1,24 @@
 {
+  "settings": {
+    "analysis": {
+      "filter": {
+        "synonym_filter": {
+          "type": "synonym_graph",
+          "synonyms_set": "jobs-synonyms-set",
+          "updateable": true
+        }
+      },
+      "analyzer": {
+        "synonym_analyzer": {
+          "tokenizer": "standard",
+          "filter": [
+            "lowercase",
+            "synonym_filter"
+          ]
+        }
+      }
+    }
+  },
   "mappings": {
     "properties": {
       "@timestamp": {
@@ -380,13 +400,7 @@
         "type": "keyword"
       },
       "source": {
-        "type": "text",
-        "fields": {
-          "keyword": {
-            "type": "keyword",
-            "ignore_above": 256
-          }
-        }
+        "type": "keyword"
       },
       "status": {
         "type": "keyword"

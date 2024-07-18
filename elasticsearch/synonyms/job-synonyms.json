@@ -1,0 +1,139 @@
+{
+  "synonyms_set": [
+    {
+      "synonyms": "GM, GM jobs, Hospitality GM, Hotel manager, Restaurant GM, Management roles, Operations leader, Senior manager, Executive manager => General Manager"
+    },
+    {
+      "synonyms": "Assistant GM, Deputy manager, Second in command, Assistant manager, Support manager, Junior manager => Assistant General Manager"
+    },
+    {
+      "synonyms": "Supervisor, Floor manager, Operations manager, Team manager, Store manager, Unit manager, Area manager, Managing role => Manager"
+    },
+    {
+      "synonyms": "Deputy manager, Second manager, Junior manager, Team leader, Assistant team manager, Support manager, Coordination manager => Assistant Manager"
+    },
+    {
+      "synonyms": "Lead chef, Executive chef, Senior chef, Kitchen head, Master chef, Chef coordinator, Culinary leader, Main chef => Head Chef"
+    },
+    {
+      "synonyms": "Chef positions, Culinary openings, Cook, Kitchen chef, Sous chef, Chef de partie, Culinary artist, Cooking roles => Chef"
+    },
+    {
+      "synonyms": "Deputy chef, Second chef, Assistant chef, Junior chef, Sous positions, Culinary assistant, Under chef, Chef support => Sous Chef"
+    },
+    {
+      "synonyms": "Personal chef, Home chef, Exclusive chef, Private kitchen chef, Chef for hire, Residential chef, Personal cook, In-home chef => Private Chef"
+    },
+    {
+      "synonyms": "Line chef, Station chef, Grill chef, Prep cook, Cook positions, Cooking staff, Kitchen cook, Order cook => Line Cook"
+    },
+    {
+      "synonyms": "Pastry chef, Dessert chef, Baker, Dessert specialist, Pastry artist, Sweet chef, Bakery cook, Pastry maker => Pastry Cook"
+    },
+    {
+      "synonyms": "Bakery positions, Pastry baker, Bread maker, Baking jobs, Baker roles, Artisan baker, Bakery staff, Baking specialist => Baker"
+    },
+    {
+      "synonyms": "Kitchen supervisor, Culinary manager, Chef manager, Food service manager, Kitchen operations, Kitchen coordinator => Kitchen Manager"
+    },
+    {
+      "synonyms": "Kitchen team, Cooking staff, Food prep staff, Culinary team, Kitchen crew, Cooks, Kitchen helpers, Prep team => Kitchen Staff"
+    },
+    {
+      "synonyms": "Front desk, Guest reception, Hotel receptionist, Reception staff, Hostess, Front office, Reception area, Client reception => Receptionist"
+    },
+    {
+      "synonyms": "Lead server, Senior waiter, Head waitress, Chief server, Primary server, Leading server, Master server, Server lead => Head Server"
+    },
+    {
+      "synonyms": "Waitstaff, Restaurant server, Waiter, Food server, Dining server, Waitperson, Table server, Hospitality server => Server"
+    },
+    {
+      "synonyms": "Wine expert, Wine steward, Wine consultant, Wine specialist, Beverage expert, Wine advisor, Vino server, Somm => Sommelier"
+    },
+    {
+      "synonyms": "Bar staff, Cocktail maker, Drink specialist, Mixologist, Pub server, Bar mixologist, Beverage mixer, Cocktail server => Bartender"
+    },
+    {
+      "synonyms": "Bar staff, Pub server, Beverage server, Drink runner, Bar attendant, Bar waiter, Nightclub server, Beverage attendant => Bar Server"
+    },
+    {
+      "synonyms": "Coffee server, Coffee maker, Café worker, Espresso maker, Coffee bar staff, Latte artist, Barista job, Coffee professional => Barista"
+    },
+    {
+      "synonyms": "Server, Waitstaff, Restaurant waiter, Food service, Table waiter, Hospitality server, Dining server, Service staff => Waiter Jobs"
+    },
+    {
+      "synonyms": "Part-time work, Evening jobs, Weekend shifts, Flexible jobs, Part-time roles, Seasonal work, P/T jobs => Part-Time"
+    },
+    {
+      "synonyms": "Full-time jobs, Day shifts, Permanent jobs, Full schedule, Career opportunities, Long-term positions => Full-Time"
+    },
+    {
+      "synonyms": "Start now, Hire immediately, Urgent start, Immediate openings, Quick start, Start today, Immediate hire => Immediate Start"
+    },
+    {
+      "synonyms": "Tipped jobs, Tip income, Earning tips, Service tips, Tip-based roles, Jobs with gratuities, Tip earnings => Tips"
+    },
+    {
+      "synonyms": "Beginner jobs, No experience, Entry roles, Start level, Newbie jobs, Basic positions, Starter jobs, First job => Entry Level"
+    },
+    {
+      "synonyms": "Nearby jobs, Local employment, Jobs near me, Community jobs, Local openings, Close by jobs, Neighborhood jobs => Local Jobs"
+    },
+    {
+      "synonyms": "Flexible jobs, Adjustable hours, Shift work, Flexible scheduling, Work when, Flexi time, Varied hours => Flexible Hours"
+    },
+    {
+      "synonyms": "Kitchen cleaner, Dish staff, Pot washer, Dishwashing jobs, Plate cleaner, Utility staff, Wash staff, Cleaning role => Dishwasher"
+    },
+    {
+      "synonyms": "Food preparer, Meal prep, Prep staff, Kitchen prep, Prep jobs, Cook helper, Food preparation, Prep station => Prep Cook"
+    },
+    {
+      "synonyms": "Casual restaurant, Informal dining, Relaxed dining jobs, Bistro work, Family-style dining, Casual service => Casual Dining"
+    },
+    {
+      "synonyms": "Upscale dining, High-end restaurant, Luxury dining, Elite dining jobs, Gourmet dining, Fine restaurant => Fine Dining"
+    },
+    {
+      "synonyms": "Quick service jobs, Fast service, Drive-thru staff, QSR jobs, Fast casual, Quick meals, Burger joint, Snack bar => Fast Food"
+    },
+    {
+      "synonyms": "Table cleaner, Bus staff, Dining helper, Runner, Table assistant, Busboy, Restaurant helper, Service assistant => Busser"
+    },
+    {
+      "synonyms": "Food runner, Order runner, Meal carrier, Service runner, Dining runner, Expediter, Kitchen runner, Plate runner => Runner"
+    },
+    {
+      "synonyms": "Catering staff, Event service, Banquet work, Catering server, Event crew, Special event catering, Party staff => Event Catering"
+    },
+    {
+      "synonyms": "Overnight work, Night jobs, Evening positions, Graveyard shifts, Late shifts, Overnight staffing, Third shift => Night Shifts"
+    },
+    {
+      "synonyms": "Urgent hiring, Start now, Immediate openings, Quick hire, Immediate work, Start immediately, Hire today => Immediate Start"
+    },
+    {
+      "synonyms": "Beginner jobs, No experience required, Starter positions, Trainee roles, First job, Entry work, New starter => Entry-Level"
+    },
+    {
+      "synonyms": "Reception jobs, Guest services, FOH staff, Front desk jobs, Customer front, Host roles, Welcome staff => Front of House"
+    },
+    {
+      "synonyms": "Kitchen jobs, BOH staff, Cooking positions, Culinary jobs, Food prep roles, Kitchen crew, Chef support => Back of House"
+    },
+    {
+      "synonyms": "Local work, Jobs close by, Nearby positions, Community employment, Area jobs, Local hiring, Around here jobs => Nearby Jobs"
+    },
+    {
+      "synonyms": "Temp work, Short-term positions, Temporary roles, Seasonal jobs, Contract work, Limited time jobs, Temp staffing => Temporary Jobs"
+    },
+    {
+      "synonyms": "Intern roles, Trainee jobs, Apprentice positions, Internship opportunities, Learning roles, Entry internships => Internships"
+    },
+    {
+      "synonyms": "work permit, work authorization => document"
+    }
+  ]
+}
