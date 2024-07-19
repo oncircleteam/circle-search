@@ -9,7 +9,15 @@
         }
       },
       "analyzer": {
-        "synonym_analyzer": {
+        "default_analyzer": {
+          "type": "custom",
+          "tokenizer": "standard",
+          "filter": [
+            "lowercase"
+          ]
+        },
+        "job_search_analyzer": {
+          "type": "custom",
           "tokenizer": "standard",
           "filter": [
             "lowercase",
@@ -26,6 +34,8 @@
       },
       "business_description": {
         "type": "text",
+        "analyzer": "default_analyzer",
+        "search_analyzer": "job_search_analyzer",
         "fields": {
           "keyword": {
             "type": "keyword",
@@ -145,6 +155,8 @@
           },
           "name": {
             "type": "text",
+            "analyzer": "default_analyzer",
+            "search_analyzer": "job_search_analyzer",
             "fields": {
               "keyword": {
                 "type": "keyword",
@@ -270,6 +282,8 @@
       },
       "job_description": {
         "type": "text",
+        "analyzer": "default_analyzer",
+        "search_analyzer": "job_search_analyzer",
         "fields": {
           "keyword": {
             "type": "keyword",
@@ -332,6 +346,8 @@
           },
           "name": {
             "type": "text",
+            "analyzer": "default_analyzer",
+            "search_analyzer": "job_search_analyzer",
             "fields": {
               "keyword": {
                 "type": "keyword",
@@ -586,6 +602,8 @@
               },
               "neighborhood_name": {
                 "type": "text",
+                "analyzer": "default_analyzer",
+                "search_analyzer": "job_search_analyzer",
                 "fields": {
                   "keyword": {
                     "type": "keyword",
