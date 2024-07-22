@@ -1,0 +1,62 @@
+{
+  "processors": [
+    {
+      "json": {
+        "field": "user",
+        "if": "ctx.user != null"
+      }
+    },
+    {
+      "json": {
+        "field": "preferred_positions",
+        "if": "ctx.preferred_positions != []"
+      }
+    },
+    {
+      "json": {
+        "field": "preferred_positions.job_position",
+        "if": "ctx.preferred_positions.job_position != null"
+      }
+    },
+    {
+      "json": {
+        "field": "referrals",
+        "if": "ctx.referrals != []"
+      }
+    },
+    {
+      "json": {
+        "field": "experiences",
+        "if": "ctx.experiences != []"
+      }
+    },
+    {
+      "json": {
+        "field": "experiences.company",
+        "if": "ctx.experiences.company != []"
+      }
+    },
+    {
+      "set": {
+        "field": "jobPositionName",
+        "copy_from": "preferred_positions.job_position.name"
+      }
+    },
+    {
+      "set": {
+        "field": "companyName",
+        "copy_from": "experiences.company.business_name"
+      }
+    },
+    {
+      "set": {
+        "field": "locationPoint",
+        "value": {
+          "lon": "{{ctx.lng}}",
+          "lat": "{{ctx.lat}}"
+        },
+        "if": "ctx.lng != null && ctx.lat.longitude != null"
+      }
+    }
+  ]
+}
