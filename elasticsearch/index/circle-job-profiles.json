@@ -16,9 +16,6 @@
       "lat": {
         "type": "float"
       },
-      "locationPoint": {
-        "type": "geo_point"
-      },
       "neighborhood_name": {
         "type": "text",
         "fields": {
@@ -516,6 +513,12 @@
           },
           "company": {
             "properties": {
+              "created_at": {
+                "type": "date"
+              },
+              "id": {
+                "type": "keyword"
+              },
               "lng": {
                 "type": "float"
               },
@@ -540,6 +543,12 @@
             }
           },
           "job_skill_id": {
+            "type": "keyword"
+          },
+          "created_at": {
+            "type": "date"
+          },
+          "id": {
             "type": "keyword"
           }
         }
