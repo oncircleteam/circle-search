@@ -1,4 +1,32 @@
 {
+  "settings": {
+    "analysis": {
+      "filter": {
+        "synonym_filter": {
+          "type": "synonym_graph",
+          "synonyms_set": "jobs-synonyms-set",
+          "updateable": true
+        }
+      },
+      "analyzer": {
+        "default_analyzer": {
+          "type": "custom",
+          "tokenizer": "standard",
+          "filter": [
+            "lowercase"
+          ]
+        },
+        "job_search_analyzer": {
+          "type": "custom",
+          "tokenizer": "standard",
+          "filter": [
+            "lowercase",
+            "synonym_filter"
+          ]
+        }
+      }
+    }
+  },
   "mappings": {
     "properties": {
       "@timestamp": {
@@ -16,8 +44,13 @@
       "lat": {
         "type": "float"
       },
+      "locationPoint": {
+        "type": "geo_point"
+      },
       "neighborhood_name": {
         "type": "text",
+        "analyzer": "default_analyzer",
+        "search_analyzer": "job_search_analyzer",
         "fields": {
           "keyword": {
             "type": "keyword",
@@ -331,6 +364,8 @@
           },
           "username": {
             "type": "text",
+            "analyzer": "default_analyzer",
+            "search_analyzer": "job_search_analyzer",
             "fields": {
               "keyword": {
                 "type": "keyword",
@@ -403,6 +438,8 @@
               },
               "name": {
                 "type": "text",
+                "analyzer": "default_analyzer",
+                "search_analyzer": "job_search_analyzer",
                 "fields": {
                   "keyword": {
                     "type": "keyword",
@@ -539,6 +576,106 @@
               },
               "business_address": {
                 "type": "text"
+              }
+            }
+          },
+          "position": {
+            "properties": {
+              "created_at": {
+                "type": "date"
+              },
+              "description": {
+                "type": "text",
+                "fields": {
+                  "keyword": {
+                    "type": "keyword",
+                    "ignore_above": 256
+                  }
+                }
+              },
+              "id": {
+                "type": "keyword"
+              },
+              "job_category_id": {
+                "type": "keyword"
+              },
+              "max_pay_per_hour": {
+                "type": "float"
+              },
+              "max_pay_per_month": {
+                "type": "float"
+              },
+              "max_pay_per_week": {
+                "type": "float"
+              },
+              "max_pay_per_year": {
+                "type": "float"
+              },
+              "min_pay_per_hour": {
+                "type": "float"
+              },
+              "min_pay_per_month": {
+                "type": "float"
+              },
+              "min_pay_per_week": {
+                "type": "float"
+              },
+              "min_pay_per_year": {
+                "type": "float"
+              },
+              "name": {
+                "type": "text",
+                "analyzer": "default_analyzer",
+                "search_analyzer": "job_search_analyzer",
+                "fields": {
+                  "keyword": {
+                    "type": "keyword",
+                    "ignore_above": 256
+                  }
+                }
+              },
+              "order": {
+                "type": "long"
+              },
+              "parent_id": {
+                "type": "keyword"
+              },
+              "translations": {
+                "properties": {
+                  "created_at": {
+                    "type": "date"
+                  },
+                  "id": {
+                    "type": "keyword"
+                  },
+                  "job_position_id": {
+                    "type": "keyword"
+                  },
+                  "language": {
+                    "type": "text",
+                    "fields": {
+                      "keyword": {
+                        "type": "keyword",
+                        "ignore_above": 256
+                      }
+                    }
+                  },
+                  "translation": {
+                    "type": "text",
+                    "fields": {
+                      "keyword": {
+                        "type": "keyword",
+                        "ignore_above": 256
+                      }
+                    }
+                  },
+                  "updated_at": {
+                    "type": "date"
+                  }
+                }
+              },
+              "updated_at": {
+                "type": "date"
               }
             }
           },
