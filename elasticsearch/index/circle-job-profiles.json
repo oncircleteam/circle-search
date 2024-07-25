@@ -1,0 +1,695 @@
+{
+  "settings": {
+    "analysis": {
+      "filter": {
+        "synonym_filter": {
+          "type": "synonym_graph",
+          "synonyms_set": "jobs-synonyms-set",
+          "updateable": true
+        }
+      },
+      "analyzer": {
+        "default_analyzer": {
+          "type": "custom",
+          "tokenizer": "standard",
+          "filter": [
+            "lowercase"
+          ]
+        },
+        "job_search_analyzer": {
+          "type": "custom",
+          "tokenizer": "standard",
+          "filter": [
+            "lowercase",
+            "synonym_filter"
+          ]
+        }
+      }
+    }
+  },
+  "mappings": {
+    "properties": {
+      "@timestamp": {
+        "type": "date"
+      },
+      "distance_radius_in_miles": {
+        "type": "float"
+      },
+      "is_open_to_work": {
+        "type": "boolean"
+      },
+      "lng": {
+        "type": "float"
+      },
+      "lat": {
+        "type": "float"
+      },
+      "locationPoint": {
+        "type": "geo_point"
+      },
+      "neighborhood_name": {
+        "type": "text",
+        "analyzer": "default_analyzer",
+        "search_analyzer": "job_search_analyzer",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "google_place_id": {
+        "type": "keyword"
+      },
+      "address": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "state": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "sub_locality": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "locality": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "zip_code": {
+        "type": "keyword"
+      },
+      "country": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "county": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "neighborhood": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "created_at": {
+        "type": "date"
+      },
+      "deleted_at": {
+        "type": "date"
+      },
+      "updated_at": {
+        "type": "date"
+      },
+      "source": {
+        "type": "keyword"
+      },
+      "status": {
+        "type": "keyword"
+      },
+      "is_night_shift": {
+        "type": "boolean"
+      },
+      "is_open_to_work_any_time": {
+        "type": "boolean"
+      },
+      "is_no_experience": {
+        "type": "boolean"
+      },
+      "experience_years_in_industry": {
+        "type": "keyword"
+      },
+      "user": {
+        "properties": {
+          "address": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "avatar": {
+            "index": false,
+            "type": "text"
+          },
+          "bio": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "bio_detected_language": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "business_name": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "business_place_id": {
+            "type": "keyword"
+          },
+          "business_place_role": {
+            "type": "keyword"
+          },
+          "business_role": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "business_type": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "category": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "created_at": {
+            "type": "date"
+          },
+          "cuisine": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "deleted_at": {
+            "type": "date"
+          },
+          "email": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "has_completed_onboarding": {
+            "type": "boolean"
+          },
+          "has_completed_profile": {
+            "type": "boolean"
+          },
+          "has_created_default_following_topics": {
+            "type": "boolean"
+          },
+          "id": {
+            "type": "keyword"
+          },
+          "industry": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "is_email_verified": {
+            "type": "boolean"
+          },
+          "language_code": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "location": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "name": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "neighborhood_id": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "neighborhood_name": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "password": {
+            "type": "keyword",
+            "index": false
+          },
+          "phone": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "restaurant_type": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "role": {
+            "type": "keyword"
+          },
+          "social_account_id": {
+            "type": "keyword"
+          },
+          "social_account_type": {
+            "type": "keyword"
+          },
+          "status": {
+            "type": "keyword"
+          },
+          "type": {
+            "type": "keyword"
+          },
+          "updated_at": {
+            "type": "date"
+          },
+          "username": {
+            "type": "text",
+            "analyzer": "default_analyzer",
+            "search_analyzer": "job_search_analyzer",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "website": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          }
+        }
+      },
+      "user_id": {
+        "type": "keyword"
+      },
+      "preferred_positions": {
+        "properties": {
+          "jobPositionName": {
+            "type": "keyword"
+          },
+          "job_position": {
+            "properties": {
+              "created_at": {
+                "type": "date"
+              },
+              "description": {
+                "type": "text",
+                "fields": {
+                  "keyword": {
+                    "type": "keyword",
+                    "ignore_above": 256
+                  }
+                }
+              },
+              "id": {
+                "type": "keyword"
+              },
+              "job_category_id": {
+                "type": "keyword"
+              },
+              "max_pay_per_hour": {
+                "type": "float"
+              },
+              "max_pay_per_month": {
+                "type": "float"
+              },
+              "max_pay_per_week": {
+                "type": "float"
+              },
+              "max_pay_per_year": {
+                "type": "float"
+              },
+              "min_pay_per_hour": {
+                "type": "float"
+              },
+              "min_pay_per_month": {
+                "type": "float"
+              },
+              "min_pay_per_week": {
+                "type": "float"
+              },
+              "min_pay_per_year": {
+                "type": "float"
+              },
+              "name": {
+                "type": "text",
+                "analyzer": "default_analyzer",
+                "search_analyzer": "job_search_analyzer",
+                "fields": {
+                  "keyword": {
+                    "type": "keyword",
+                    "ignore_above": 256
+                  }
+                }
+              },
+              "order": {
+                "type": "long"
+              },
+              "parent_id": {
+                "type": "keyword"
+              },
+              "translations": {
+                "properties": {
+                  "created_at": {
+                    "type": "date"
+                  },
+                  "id": {
+                    "type": "keyword"
+                  },
+                  "job_position_id": {
+                    "type": "keyword"
+                  },
+                  "language": {
+                    "type": "text",
+                    "fields": {
+                      "keyword": {
+                        "type": "keyword",
+                        "ignore_above": 256
+                      }
+                    }
+                  },
+                  "translation": {
+                    "type": "text",
+                    "fields": {
+                      "keyword": {
+                        "type": "keyword",
+                        "ignore_above": 256
+                      }
+                    }
+                  },
+                  "updated_at": {
+                    "type": "date"
+                  }
+                }
+              },
+              "updated_at": {
+                "type": "date"
+              }
+            }
+          },
+          "job_position_id": {
+            "type": "keyword"
+          }
+        }
+      },
+      "referrals": {
+        "properties": {
+          "created_at": {
+            "type": "date"
+          },
+          "id": {
+            "type": "keyword"
+          },
+          "referral_id": {
+            "type": "keyword"
+          },
+          "job_profile_id": {
+            "type": "keyword"
+          },
+          "status": {
+            "type": "keyword"
+          }
+        }
+      },
+      "experiences": {
+        "properties": {
+          "job_profile_id": {
+            "type": "keyword"
+          },
+          "job_position_id": {
+            "type": "keyword"
+          },
+          "type": {
+            "type": "keyword"
+          },
+          "start_time": {
+            "type": "date"
+          },
+          "end_time": {
+            "type": "date"
+          },
+          "is_active": {
+            "type": "boolean"
+          },
+          "total_working_days": {
+            "type": "float"
+          },
+          "is_hide_from_current_employer": {
+            "type": "boolean"
+          },
+          "job_experience_company_id": {
+            "type": "keyword"
+          },
+          "companyName": {
+            "type": "keyword"
+          },
+          "company": {
+            "properties": {
+              "created_at": {
+                "type": "date"
+              },
+              "id": {
+                "type": "keyword"
+              },
+              "lng": {
+                "type": "float"
+              },
+              "lat": {
+                "type": "float"
+              },
+              "google_place_id": {
+                "type": "keyword"
+              },
+              "business_name": {
+                "type": "text",
+                "fields": {
+                  "keyword": {
+                    "type": "keyword",
+                    "ignore_above": 256
+                  }
+                }
+              },
+              "business_address": {
+                "type": "text"
+              }
+            }
+          },
+          "position": {
+            "properties": {
+              "created_at": {
+                "type": "date"
+              },
+              "description": {
+                "type": "text",
+                "fields": {
+                  "keyword": {
+                    "type": "keyword",
+                    "ignore_above": 256
+                  }
+                }
+              },
+              "id": {
+                "type": "keyword"
+              },
+              "job_category_id": {
+                "type": "keyword"
+              },
+              "max_pay_per_hour": {
+                "type": "float"
+              },
+              "max_pay_per_month": {
+                "type": "float"
+              },
+              "max_pay_per_week": {
+                "type": "float"
+              },
+              "max_pay_per_year": {
+                "type": "float"
+              },
+              "min_pay_per_hour": {
+                "type": "float"
+              },
+              "min_pay_per_month": {
+                "type": "float"
+              },
+              "min_pay_per_week": {
+                "type": "float"
+              },
+              "min_pay_per_year": {
+                "type": "float"
+              },
+              "name": {
+                "type": "text",
+                "analyzer": "default_analyzer",
+                "search_analyzer": "job_search_analyzer",
+                "fields": {
+                  "keyword": {
+                    "type": "keyword",
+                    "ignore_above": 256
+                  }
+                }
+              },
+              "order": {
+                "type": "long"
+              },
+              "parent_id": {
+                "type": "keyword"
+              },
+              "translations": {
+                "properties": {
+                  "created_at": {
+                    "type": "date"
+                  },
+                  "id": {
+                    "type": "keyword"
+                  },
+                  "job_position_id": {
+                    "type": "keyword"
+                  },
+                  "language": {
+                    "type": "text",
+                    "fields": {
+                      "keyword": {
+                        "type": "keyword",
+                        "ignore_above": 256
+                      }
+                    }
+                  },
+                  "translation": {
+                    "type": "text",
+                    "fields": {
+                      "keyword": {
+                        "type": "keyword",
+                        "ignore_above": 256
+                      }
+                    }
+                  },
+                  "updated_at": {
+                    "type": "date"
+                  }
+                }
+              },
+              "updated_at": {
+                "type": "date"
+              }
+            }
+          },
+          "job_skill_id": {
+            "type": "keyword"
+          },
+          "created_at": {
+            "type": "date"
+          },
+          "id": {
+            "type": "keyword"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "processors": [
+    {
+      "json": {
+        "field": "user",
+        "if": "ctx.user != null"
+      }
+    },
+    {
+      "json": {
+        "field": "preferred_positions",
+        "if": "ctx.preferred_positions != []"
+      }
+    },
+    {
+      "json": {
+        "field": "referrals",
+        "if": "ctx.referrals != []"
+      }
+    },
+    {
+      "json": {
+        "field": "experiences",
+        "if": "ctx.experiences != []"
+      }
+    },
+    {
+      "set": {
+        "field": "locationPoint",
+        "value": {
+          "lon": "{{lng}}",
+          "lat": "{{lat}}"
+        },
+        "if": "ctx.lat != null && ctx.lng != null"
+      }
+    }
+  ]
+}
