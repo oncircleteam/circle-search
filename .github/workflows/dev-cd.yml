@@ -46,6 +46,8 @@ jobs:
         uses: montudor/action-zip@v1
         with:
           args: zip -qq -r circle-search.zip .env
+      - name: test log # TODO: remove
+        run: echo ${{ secrets.SSH_DEVELOP_HOST }}
       - name: copy file via ssh
         uses: appleboy/scp-action@master
         with:
