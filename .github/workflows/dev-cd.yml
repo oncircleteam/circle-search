@@ -17,28 +17,28 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: Send custom JSON data to Slack workflow
-        uses: slackapi/slack-github-action@v1.24.0
-        with:
-          # This data can be any valid JSON from a previous step in the GitHub Action
-          payload: |
-            {
-              "text": "Deployment: circle-search-service (dev): in progress \n${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
-              "blocks": [
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "Deployment: circle-search-service (dev): in progress \n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
-                  }
-                }
-              ]
-            }
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-      - uses: actions/setup-node@v3
-        with:
-          node-version: "20"
+      # - name: Send custom JSON data to Slack workflow
+      #   uses: slackapi/slack-github-action@v1.24.0
+      #   with:
+      #     # This data can be any valid JSON from a previous step in the GitHub Action
+      #     payload: |
+      #       {
+      #         "text": "Deployment: circle-search-service (dev): in progress \n${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
+      #         "blocks": [
+      #           {
+      #             "type": "section",
+      #             "text": {
+      #               "type": "mrkdwn",
+      #               "text": "Deployment: circle-search-service (dev): in progress \n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+      #             }
+      #           }
+      #         ]
+      #       }
+      #   env:
+      #     SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      # - uses: actions/setup-node@v3
+      #   with:
+      #     node-version: "20"
       - run: rm -rf .env
       - run: touch .env
       - run: echo "${{ vars.DEV_ENV }}" >> .env
@@ -83,22 +83,22 @@ jobs:
             cd /usr/local/src/circle-search-temp
             rm -rf /usr/local/src/circle-search/
             mv /usr/local/src/circle-search-temp/ /usr/local/src/circle-search/
-      - name: Send custom JSON data to Slack workflow
-        uses: slackapi/slack-github-action@v1.24.0
-        with:
-          # This data can be any valid JSON from a previous step in the GitHub Action
-          payload: |
-            {
-              "text": "Deployment: circle-search-service (dev): ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
-              "blocks": [
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "Deployment: circle-search-service (dev): ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
-                  }
-                }
-              ]
-            }
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      # - name: Send custom JSON data to Slack workflow
+      #   uses: slackapi/slack-github-action@v1.24.0
+      #   with:
+      #     # This data can be any valid JSON from a previous step in the GitHub Action
+      #     payload: |
+      #       {
+      #         "text": "Deployment: circle-search-service (dev): ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
+      #         "blocks": [
+      #           {
+      #             "type": "section",
+      #             "text": {
+      #               "type": "mrkdwn",
+      #               "text": "Deployment: circle-search-service (dev): ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+      #             }
+      #           }
+      #         ]
+      #       }
+      #   env:
+      #     SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
