@@ -4,7 +4,7 @@ name: circle-search-production-cd
 
 # Controls when the action will run.
 on:
-  # Triggers the workflow on push or pull request events but only for the dev branch
+  # Triggers the workflow on push or pull request events but only for the `main` branch
   push:
     branches: [main]
 
@@ -36,14 +36,12 @@ jobs:
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-      - name: migration & build app
-        uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: "20"
       - run: rm -rf .env
       - run: touch .env
-      - run: echo "${{ vars.DEV_ENV }}" >> .env
+      - run: echo "${{ vars.PROD_ENV }}" >> .env
       - name: Zip build folder
         uses: montudor/action-zip@v1
         with:
