@@ -68,8 +68,8 @@ jobs:
             mkdir -p /usr/local/src/circle-search-temp/
             unzip circle-search.zip -d /usr/local/src/circle-search-temp/
             rm -rf /usr/local/src/circle-search/
-            mv /usr/local/src/circle-search-temp /usr/local/src/circle-search
-            rm -rf ~/circle-search.zip
+            mv /usr/local/src/circle-search-temp/* /usr/local/src/circle-search/
+            
       - name: Send custom JSON data to Slack workflow
         uses: slackapi/slack-github-action@v1.24.0
         with:
