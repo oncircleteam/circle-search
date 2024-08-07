@@ -45,7 +45,7 @@ jobs:
       - name: Zip build folder
         uses: montudor/action-zip@v1
         with:
-          args: zip -qq -r circle-search.zip .env
+          args:   circle-search.zip . -x "node_modules/*" -x ".github/*"
       - name: copy file via ssh
         uses: appleboy/scp-action@master
         with:
@@ -65,11 +65,11 @@ jobs:
           script: |
             cd ~
             rm -rf /usr/local/src/circle-search-temp/
-            mkdir /usr/local/src/circle-search-temp/
+            mkdir -p /usr/local/src/circle-search-temp/
             unzip circle-search.zip -d /usr/local/src/circle-search-temp/
-            rm -rf ~/circle-search.zip
             rm -rf /usr/local/src/circle-search/
             mv /usr/local/src/circle-search-temp /usr/local/src/circle-search
+            rm -rf ~/circle-search.zip
       - name: Send custom JSON data to Slack workflow
         uses: slackapi/slack-github-action@v1.24.0
         with:
