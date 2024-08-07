@@ -17,25 +17,25 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: Send custom JSON data to Slack workflow
-        uses: slackapi/slack-github-action@v1.24.0
-        with:
-          # This data can be any valid JSON from a previous step in the GitHub Action
-          payload: |
-            {
-              "text": "Deployment: circle-search-service (dev): in progress \n${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
-              "blocks": [
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "Deployment: circle-search-service (dev): in progress \n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
-                  }
-                }
-              ]
-            }
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      # - name: Send custom JSON data to Slack workflow
+      #   uses: slackapi/slack-github-action@v1.24.0
+      #   with:
+      #     # This data can be any valid JSON from a previous step in the GitHub Action
+      #     payload: |
+      #       {
+      #         "text": "Deployment: circle-search-service (dev): in progress \n${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
+      #         "blocks": [
+      #           {
+      #             "type": "section",
+      #             "text": {
+      #               "type": "mrkdwn",
+      #               "text": "Deployment: circle-search-service (dev): in progress \n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+      #             }
+      #           }
+      #         ]
+      #       }
+      #   env:
+      #     SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
       - uses: actions/setup-node@v3
         with:
           node-version: "20"
@@ -46,6 +46,8 @@ jobs:
         uses: montudor/action-zip@v1
         with:
           args: zip -qq -r circle-search.zip elasticsearch extensions kibana logstash setup .env .gitignore .docker-compose.yml
+      # list all files in circle-search.zip
+      - run: unzip -l circle-search.zip
       - name: copy file via ssh
         uses: appleboy/scp-action@master
         with:
@@ -67,25 +69,25 @@ jobs:
             rm -rf /usr/local/src/circle-search-temp/
             mkdir -p /usr/local/src/circle-search-temp/
             unzip circle-search.zip -d /usr/local/src/circle-search-temp/
-            rm -rf /usr/local/src/circle-search/
-            mv /usr/local/src/circle-search-temp/* /usr/local/src/circle-search/
+            sudo rm -rf /usr/local/src/circle-search/
+            sudo mv /usr/local/src/circle-search-temp/* /usr/local/src/circle-search/
             
-      - name: Send custom JSON data to Slack workflow
-        uses: slackapi/slack-github-action@v1.24.0
-        with:
-          # This data can be any valid JSON from a previous step in the GitHub Action
-          payload: |
-            {
-              "text": "Deployment: circle-search-service (dev): ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
-              "blocks": [
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "Deployment: circle-search-service (dev): ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
-                  }
-                }
-              ]
-            }
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      # - name: Send custom JSON data to Slack workflow
+      #   uses: slackapi/slack-github-action@v1.24.0
+      #   with:
+      #     # This data can be any valid JSON from a previous step in the GitHub Action
+      #     payload: |
+      #       {
+      #         "text": "Deployment: circle-search-service (dev): ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
+      #         "blocks": [
+      #           {
+      #             "type": "section",
+      #             "text": {
+      #               "type": "mrkdwn",
+      #               "text": "Deployment: circle-search-service (dev): ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+      #             }
+      #           }
+      #         ]
+      #       }
+      #   env:
+      #     SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
