@@ -1,12 +1,12 @@
 # This is a basic workflow to help you get started with Actions
 
-name: circle-search-develop-cd
+name: circle-search-production-cd
 
 # Controls when the action will run.
 on:
   # Triggers the workflow on push or pull request events but only for the dev branch
   push:
-    branches: [dev]
+    branches: [main]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -23,13 +23,13 @@ jobs:
           # This data can be any valid JSON from a previous step in the GitHub Action
           payload: |
             {
-              "text": "Deployment: circle-search-service (dev): in progress \n${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
+              "text": "Deployment: circle-search-service (prod): in progress \n${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
               "blocks": [
                 {
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "Deployment: circle-search-service (dev): in progress \n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+                    "text": "Deployment: circle-search-service (prod): in progress \n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
                   }
                 }
               ]
@@ -43,7 +43,7 @@ jobs:
           node-version: "20"
       - run: rm -rf .env
       - run: touch .env
-      - run: echo "${{ vars.DEV_ENV }}" >> .env
+      - run: echo "${{ vars.PROD_ENV }}" >> .env
       - name: Zip build folder
         uses: montudor/action-zip@v1
         with:
@@ -55,18 +55,18 @@ jobs:
       - name: copy file via ssh
         uses: appleboy/scp-action@master
         with:
-          host: ${{ secrets.SSH_DEVELOP_HOST }}
-          username: ${{ secrets.SSH_DEVELOP_USERNAME }}
-          key: ${{ secrets.SSH_DEVELOP_KEY }}
+          host: ${{ secrets.SSH_PROD_HOST }}
+          username: ${{ secrets.SSH_PROD_USERNAME }}
+          key: ${{ secrets.SSH_PROD_KEY }}
           port: 22
           source: "circle-search.zip"
           target: "~/"
       - name: unzip using ssh
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.SSH_DEVELOP_HOST }}
-          username: ${{ secrets.SSH_DEVELOP_USERNAME }}
-          key: ${{ secrets.SSH_DEVELOP_KEY }}
+          host: ${{ secrets.SSH_PROD_HOST }}
+          username: ${{ secrets.SSH_PROD_USERNAME }}
+          key: ${{ secrets.SSH_PROD_KEY }}
           port: 22
           script: |
             cd ~
@@ -83,13 +83,13 @@ jobs:
           # This data can be any valid JSON from a previous step in the GitHub Action
           payload: |
             {
-              "text": "Deployment: circle-search-service (dev): ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
+              "text": "Deployment: circle-search-service (prod): ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
               "blocks": [
                 {
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "Deployment: circle-search-service (dev): ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+                    "text": "Deployment: circle-search-service (prod): ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
                   }
                 }
               ]
