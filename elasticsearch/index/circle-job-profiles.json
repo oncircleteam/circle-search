@@ -152,7 +152,13 @@
         "type": "boolean"
       },
       "experience_years_in_industry": {
-        "type": "keyword"
+        "type": "float",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
       },
       "user": {
         "properties": {
