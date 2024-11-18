@@ -74,6 +74,10 @@ services:
     volumes:
       - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro,Z
       - ./logstash/pipeline:/usr/share/logstash/pipeline:ro,Z
+      - ./plugins:/usr/share/logstash/plugins:ro,Z
+    command: >
+      bash -c "bin/logstash-plugin install logstash-filter-rest &&
+               /usr/local/bin/docker-entrypoint"
     ports:
       - 5044:5044
       - 50000:50000/tcp
@@ -87,6 +91,7 @@ services:
       DATABASE_USER: ${DATABASE_USER:-}
       DATABASE_PASSWORD: ${DATABASE_PASSWORD:-}
       DATABASE_DATABASE: ${DATABASE_DATABASE:-}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
     networks:
       - elk
     depends_on:
