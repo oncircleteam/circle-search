@@ -400,6 +400,7 @@
         "type": "keyword"
       },
       "preferred_positions": {
+        "type": "nested",
         "properties": {
           "jobPositionName": {
             "type": "keyword"
