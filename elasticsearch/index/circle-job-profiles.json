@@ -32,6 +32,12 @@
       "@timestamp": {
         "type": "date"
       },
+      "vector_embedding": {
+        "type": "dense_vector",
+        "dims": 1536,
+        "index": true,
+        "similarity": "cosine"
+      },
       "distance_radius_in_miles": {
         "type": "float"
       },
@@ -394,6 +400,7 @@
         "type": "keyword"
       },
       "preferred_positions": {
+        "type": "nested",
         "properties": {
           "jobPositionName": {
             "type": "keyword"
