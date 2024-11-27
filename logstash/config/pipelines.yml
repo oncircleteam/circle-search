@@ -1,0 +1,11 @@
+- pipeline.id: job_profile_sync
+  path.config: "/usr/share/logstash/pipeline/job-profile-sync.conf"
+  pipeline.workers: 1
+
+- pipeline.id: job_listing_sync
+  path.config: "/usr/share/logstash/pipeline/job-listing-sync.conf"
+  pipeline.workers: 1
+
+- pipeline.id: main
+  path.config: "/usr/share/logstash/pipeline/logstash.conf"
+  pipeline.workers: 1
