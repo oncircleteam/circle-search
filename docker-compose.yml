@@ -1,7 +1,6 @@
-version: '3.7'
+version: "3.7"
 
 services:
-
   # The 'setup' service runs a one-off script which initializes users inside
   # Elasticsearch — such as 'logstash_internal' and 'kibana_system' — with the
   # values of the passwords defined in the '.env' file. It also creates the
@@ -74,20 +73,26 @@ services:
         ELASTIC_VERSION: ${ELASTIC_VERSION}
     volumes:
       - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro,Z
+      - ./logstash/config/pipelines.yml:/usr/share/logstash/config/pipelines.yml:ro,Z
       - ./logstash/pipeline:/usr/share/logstash/pipeline:ro,Z
+      - ./plugins:/usr/share/logstash/plugins:ro,Z
+    command: >
+      bash -c "bin/logstash-plugin install logstash-filter-rest &&
+               /usr/local/bin/docker-entrypoint"
     ports:
       - 5044:5044
       - 50000:50000/tcp
       - 50000:50000/udp
       - 9600:9600
     environment:
-      LS_JAVA_OPTS: -Xms256m -Xmx256m
+      LS_JAVA_OPTS: -Xms1024m -Xmx1024m
       LOGSTASH_INTERNAL_PASSWORD: ${LOGSTASH_INTERNAL_PASSWORD:-}
       DATABASE_HOST: ${DATABASE_HOST:-}
       DATABASE_PORT: ${DATABASE_PORT:-}
       DATABASE_USER: ${DATABASE_USER:-}
       DATABASE_PASSWORD: ${DATABASE_PASSWORD:-}
       DATABASE_DATABASE: ${DATABASE_DATABASE:-}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
     networks:
       - elk
     depends_on:

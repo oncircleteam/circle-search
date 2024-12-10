@@ -32,6 +32,12 @@
       "@timestamp": {
         "type": "date"
       },
+      "vector_profile_embedding": {
+        "type": "dense_vector",
+        "dims": 1536,
+        "index": true,
+        "similarity": "cosine"
+      },
       "distance_radius_in_miles": {
         "type": "float"
       },
@@ -152,7 +158,13 @@
         "type": "boolean"
       },
       "experience_years_in_industry": {
-        "type": "keyword"
+        "type": "float",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
       },
       "user": {
         "properties": {
@@ -388,6 +400,7 @@
         "type": "keyword"
       },
       "preferred_positions": {
+        "type": "nested",
         "properties": {
           "jobPositionName": {
             "type": "keyword"
