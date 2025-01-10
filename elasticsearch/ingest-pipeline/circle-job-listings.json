@@ -43,6 +43,12 @@
         },
         "if": "ctx.user != null && ctx.user.business_place != null && ctx.business_place.longitude != null && ctx.business_place.latitude != null"
       }
+    },
+    {
+      "json": {
+        "field": "required_languages",
+        "if": "ctx.required_languages != null"
+      }
     }
   ]
 }
