@@ -411,9 +411,6 @@
       "preferred_positions": {
         "type": "nested",
         "properties": {
-          "jobPositionName": {
-            "type": "keyword"
-          },
           "job_position": {
             "properties": {
               "created_at": {
