@@ -166,6 +166,15 @@
           }
         }
       },
+      "bio": {
+        "type": "keyword"
+      },
+      "education_description": {
+        "type": "keyword"
+      },
+      "is_authorized_to_work_in_us": {
+        "type": "boolean"
+      },
       "user": {
         "properties": {
           "address": {
