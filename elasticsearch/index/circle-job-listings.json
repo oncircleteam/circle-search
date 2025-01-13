@@ -872,6 +872,41 @@
       },
       "user_id": {
         "type": "keyword"
+      },
+      "is_authorized_to_work_in_us_required": {
+        "type": "boolean"
+      },
+      "required_languages": {
+        "type": "nested",
+        "properties": {
+          "id": {
+            "type": "keyword"
+          },
+          "name": {
+            "type": "keyword"
+          }
+        }
+      },
+      "weekly_work_days": {
+        "type": "integer"
+      },
+      "total_weekly_work_day": {
+        "type": "integer"
+      },
+      "daily_work_hour_from": {
+        "type": "short"
+      },
+      "daily_work_hour_to": {
+        "type": "short"
+      },
+      "total_daily_work_hours": {
+        "type": "short"
+      },
+      "workShifts": {
+        "type": "keyword"
+      },
+      "benefits": {
+        "type": "keyword"
       }
     }
   }
