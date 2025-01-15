@@ -8,17 +8,28 @@
           "updateable": true
         }
       },
+      "tokenizer": {
+        "ngram_tokenizer": {
+          "type": "ngram",
+          "min_gram": 1,
+          "max_gram": 2,
+          "token_chars": [
+            "letter",
+            "digit"
+          ]
+        }
+      },
       "analyzer": {
         "default_analyzer": {
           "type": "custom",
-          "tokenizer": "standard",
+          "tokenizer": "ngram_tokenizer",
           "filter": [
             "lowercase"
           ]
         },
         "job_search_analyzer": {
           "type": "custom",
-          "tokenizer": "standard",
+          "tokenizer": "ngram_tokenizer",
           "filter": [
             "lowercase",
             "synonym_filter"
@@ -172,8 +183,6 @@
           },
           "name": {
             "type": "text",
-            "analyzer": "default_analyzer",
-            "search_analyzer": "job_search_analyzer",
             "fields": {
               "keyword": {
                 "type": "keyword",
@@ -400,6 +409,8 @@
               },
               "translation": {
                 "type": "text",
+                "analyzer": "default_analyzer",
+                "search_analyzer": "job_search_analyzer",
                 "fields": {
                   "keyword": {
                     "type": "keyword",
@@ -529,6 +540,8 @@
               },
               "description": {
                 "type": "text",
+                "analyzer": "default_analyzer",
+                "search_analyzer": "job_search_analyzer",
                 "fields": {
                   "keyword": {
                     "type": "keyword",
@@ -601,6 +614,8 @@
               },
               "name": {
                 "type": "text",
+                "analyzer": "default_analyzer",
+                "search_analyzer": "job_search_analyzer",
                 "fields": {
                   "keyword": {
                     "type": "keyword",
