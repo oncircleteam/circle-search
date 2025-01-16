@@ -8,17 +8,28 @@
           "updateable": true
         }
       },
+      "tokenizer": {
+        "ngram_tokenizer": {
+          "type": "ngram",
+          "min_gram": 1,
+          "max_gram": 2,
+          "token_chars": [
+            "letter",
+            "digit"
+          ]
+        }
+      },
       "analyzer": {
         "default_analyzer": {
           "type": "custom",
-          "tokenizer": "standard",
+          "tokenizer": "ngram_tokenizer",
           "filter": [
             "lowercase"
           ]
         },
         "job_search_analyzer": {
           "type": "custom",
-          "tokenizer": "standard",
+          "tokenizer": "ngram_tokenizer",
           "filter": [
             "lowercase",
             "synonym_filter"
@@ -167,11 +178,27 @@
         }
       },
       "bio": {
-        "type": "keyword"
+        "type": "text",
+            "analyzer": "default_analyzer",
+            "search_analyzer": "job_search_analyzer",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+        }
       },
       "education_description": {
-        "type": "keyword"
-      },
+        "type": "text",
+            "analyzer": "default_analyzer",
+            "search_analyzer": "job_search_analyzer",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+        }
+      },  
       "is_authorized_to_work_in_us": {
         "type": "boolean"
       },
@@ -192,6 +219,8 @@
           },
           "bio": {
             "type": "text",
+            "analyzer": "default_analyzer",
+            "search_analyzer": "job_search_analyzer",
             "fields": {
               "keyword": {
                 "type": "keyword",
@@ -318,6 +347,8 @@
           },
           "name": {
             "type": "text",
+            "analyzer": "default_analyzer",
+            "search_analyzer": "job_search_analyzer",
             "fields": {
               "keyword": {
                 "type": "keyword",
@@ -513,6 +544,36 @@
           },
           "job_position_id": {
             "type": "keyword"
+          }
+        }
+      },
+      "job_skills": {
+        "type": "nested",
+        "properties": {
+          "id": {
+            "type": "text"
+          },
+          "name": {
+            "type": "text",
+            "analyzer": "default_analyzer",
+            "search_analyzer": "job_search_analyzer",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "type": {
+           "type": "text",
+            "analyzer": "default_analyzer",
+            "search_analyzer": "job_search_analyzer",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+           }
           }
         }
       },
