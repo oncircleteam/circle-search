@@ -440,7 +440,6 @@
         "type": "keyword"
       },
       "preferred_positions": {
-        "type": "nested",
         "properties": {
           "job_position": {
             "properties": {
@@ -503,42 +502,34 @@
               "parent_id": {
                 "type": "keyword"
               },
-              "translations": {
-                "properties": {
-                  "created_at": {
-                    "type": "date"
-                  },
-                  "id": {
-                    "type": "keyword"
-                  },
-                  "job_position_id": {
-                    "type": "keyword"
-                  },
-                  "language": {
-                    "type": "text",
-                    "fields": {
-                      "keyword": {
-                        "type": "keyword",
-                        "ignore_above": 256
-                      }
-                    }
-                  },
-                  "translation": {
-                    "type": "text",
-                    "fields": {
-                      "keyword": {
-                        "type": "keyword",
-                        "ignore_above": 256
-                      }
-                    }
-                  },
-                  "updated_at": {
-                    "type": "date"
+              "updated_at": {
+                "type": "date"
+              }
+            }
+          },
+          "translations": {
+            "properties": {
+              "include_position_names": {
+               "type": "text",
+               "analyzer": "default_analyzer",
+               "search_analyzer": "job_search_analyzer",
+                "fields": {
+                  "keyword": {
+                    "type": "keyword",
+                    "ignore_above": 256
                   }
                 }
               },
-              "updated_at": {
-                "type": "date"
+              "name": {
+                "type": "text",
+                "analyzer": "default_analyzer",
+                "search_analyzer": "job_search_analyzer",
+                "fields": {
+                  "keyword": {
+                    "type": "keyword",
+                    "ignore_above": 256
+                  }
+                }
               }
             }
           },
@@ -548,7 +539,6 @@
         }
       },
       "job_skills": {
-        "type": "nested",
         "properties": {
           "id": {
             "type": "text"
