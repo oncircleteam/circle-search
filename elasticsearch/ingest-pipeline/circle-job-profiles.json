@@ -33,6 +33,12 @@
         },
         "if": "ctx.lat != null && ctx.lng != null"
       }
+    },
+    {
+      "json": {
+        "field": "job_skills",
+        "if": "ctx.job_skills != []"
+      }
     }
   ]
 }
