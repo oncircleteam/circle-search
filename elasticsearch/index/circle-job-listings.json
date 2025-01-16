@@ -892,7 +892,6 @@
         "type": "boolean"
       },
       "required_languages": {
-        "type": "nested",
         "properties": {
           "id": {
             "type": "keyword"
