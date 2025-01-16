@@ -38,6 +38,17 @@
         "index": true,
         "similarity": "cosine"
       },
+      "description_vector": {
+        "type": "text",
+        "analyzer": "default_analyzer",
+        "search_analyzer": "job_search_analyzer",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
       "distance_radius_in_miles": {
         "type": "float"
       },

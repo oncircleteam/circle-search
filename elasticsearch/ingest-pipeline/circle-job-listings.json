@@ -49,6 +49,12 @@
         "field": "required_languages",
         "if": "ctx.required_languages != null"
       }
+    },
+    {
+      "json": {
+        "field": "job_skills",
+        "if": "ctx.job_skills != []"
+      }
     }
   ]
 }
