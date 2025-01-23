@@ -1,5 +1,8 @@
 {
   "settings": {
+    "index": {
+      "max_ngram_diff": 2
+    },
     "analysis": {
       "filter": {
         "synonym_filter": {
