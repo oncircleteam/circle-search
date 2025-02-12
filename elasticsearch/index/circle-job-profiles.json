@@ -555,7 +555,7 @@
       "job_skills": {
         "properties": {
           "id": {
-            "type": "text"
+           "type": "keyword"
           },
           "name": {
             "type": "text",
@@ -770,6 +770,20 @@
             "type": "date"
           },
           "id": {
+            "type": "keyword"
+          }
+        }
+      },
+      "languages": {
+        "type": "nested",
+        "properties": {
+          "id": {
+            "type": "keyword"
+          },
+          "name": {
+            "type": "keyword"
+          },
+          "level": {
             "type": "keyword"
           }
         }
