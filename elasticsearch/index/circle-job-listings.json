@@ -907,7 +907,7 @@
       "weekly_work_days": {
         "type": "integer"
       },
-      "total_weekly_work_day": {
+      "total_weekly_work_days": {
         "type": "integer"
       },
       "daily_work_hour_from": {
@@ -942,7 +942,7 @@
             }
           },
           "type": {
-           "type": "text",
+            "type": "text",
             "analyzer": "default_analyzer",
             "search_analyzer": "job_search_analyzer",
             "fields": {
@@ -950,7 +950,7 @@
                 "type": "keyword",
                 "ignore_above": 256
               }
-           }
+            }
           }
         }
       }
