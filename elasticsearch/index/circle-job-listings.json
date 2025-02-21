@@ -1,5 +1,8 @@
 {
   "settings": {
+    "index": {
+      "max_ngram_diff": 4
+    },
     "analysis": {
       "filter": {
         "synonym_filter": {
@@ -8,17 +11,28 @@
           "updateable": true
         }
       },
+      "tokenizer": {
+        "ngram_tokenizer": {
+          "type": "ngram",
+          "min_gram": 2,
+          "max_gram": 4,
+          "token_chars": [
+            "letter",
+            "digit"
+          ]
+        }
+      },
       "analyzer": {
         "default_analyzer": {
           "type": "custom",
-          "tokenizer": "standard",
+          "tokenizer": "ngram_tokenizer",
           "filter": [
             "lowercase"
           ]
         },
         "job_search_analyzer": {
           "type": "custom",
-          "tokenizer": "standard",
+          "tokenizer": "ngram_tokenizer",
           "filter": [
             "lowercase",
             "synonym_filter"
@@ -172,8 +186,6 @@
           },
           "name": {
             "type": "text",
-            "analyzer": "default_analyzer",
-            "search_analyzer": "job_search_analyzer",
             "fields": {
               "keyword": {
                 "type": "keyword",
@@ -400,6 +412,8 @@
               },
               "translation": {
                 "type": "text",
+                "analyzer": "default_analyzer",
+                "search_analyzer": "job_search_analyzer",
                 "fields": {
                   "keyword": {
                     "type": "keyword",
@@ -529,6 +543,8 @@
               },
               "description": {
                 "type": "text",
+                "analyzer": "default_analyzer",
+                "search_analyzer": "job_search_analyzer",
                 "fields": {
                   "keyword": {
                     "type": "keyword",
@@ -601,6 +617,8 @@
               },
               "name": {
                 "type": "text",
+                "analyzer": "default_analyzer",
+                "search_analyzer": "job_search_analyzer",
                 "fields": {
                   "keyword": {
                     "type": "keyword",
@@ -872,6 +890,69 @@
       },
       "user_id": {
         "type": "keyword"
+      },
+      "is_authorized_to_work_in_us_required": {
+        "type": "boolean"
+      },
+      "required_languages": {
+        "properties": {
+          "id": {
+            "type": "keyword"
+          },
+          "name": {
+            "type": "keyword"
+          }
+        }
+      },
+      "weekly_work_days": {
+        "type": "integer"
+      },
+      "total_weekly_work_days": {
+        "type": "integer"
+      },
+      "daily_work_hour_from": {
+        "type": "short"
+      },
+      "daily_work_hour_to": {
+        "type": "short"
+      },
+      "total_daily_work_hours": {
+        "type": "short"
+      },
+      "workShifts": {
+        "type": "keyword"
+      },
+      "benefits": {
+        "type": "keyword"
+      },
+      "job_skills": {
+        "properties": {
+          "id": {
+            "type": "text"
+          },
+          "name": {
+            "type": "text",
+            "analyzer": "default_analyzer",
+            "search_analyzer": "job_search_analyzer",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "type": {
+            "type": "text",
+            "analyzer": "default_analyzer",
+            "search_analyzer": "job_search_analyzer",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          }
+        }
       }
     }
   }
