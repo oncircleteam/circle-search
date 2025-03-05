@@ -309,6 +309,9 @@
       "is_tips": {
         "type": "boolean"
       },
+      "is_open_to_all_experience_level": {
+        "type": "boolean"
+      },
       "job_description": {
         "type": "text",
         "analyzer": "default_analyzer",
